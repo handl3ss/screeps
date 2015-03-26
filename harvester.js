@@ -1,8 +1,8 @@
  module.exports = function(creep){
      if(creep.energy < creep.energyCapacity){
-   var sources = creep.room.find(Game.SOURCES);
-   creep.moveTo(sources[0]);
-   creep.harvest(sources[0]); 
+  var target = creep.pos.findClosest(Game.SOURCES);
+   creep.moveTo(target);
+   creep.harvest(taget); 
     }  else {
     creep.moveTo(Game.spawns.Spawn1);
     creep.transferEnergy(Game.spawns.Spawn1);
