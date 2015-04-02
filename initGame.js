@@ -1,17 +1,36 @@
-var harvester = require('harvester');
-var builder = require('builder');
-var guard = require('guard');
-for(var name in Game.creeps){
-    var creep = Game.creeps[name];
-    if(creep.memory.role == 'harvester'){
-           harvester(creep); 
-    }
 
-    
-	if(creep.memory.role == 'builder') {
-	 builder(creep);
+var Spawn = require('spawner');
+var CreepLogic = require('creepLogic');
+
+var roles = {
+	firstGeneration:{
+		guard: [Game.TOUGHT,Game.TOUGHT,Game.TOUGHT,Game.MOVE,Game.ATTACK,Game.ATTACK],
+		archer: [Game.TOUGHT,Game.TOUGHT,Game.MOVE,Game.RANGED_ATTACK,Game.RANGED_ATTACK],
+		carrier: [Game.MOVE,Game.CARRY],
+		healer: [Game.MOVE,Game.HEAL,Game.HEAL],
+		worker: [Game.MOVE,Game.WORK,Game.WORK,Game.WORK]
 	}
-	if(creep.memory.role == 'guard') {
-	guard(creep);
-	}
-}
+};
+
+var startCombination = [
+	{name:'worker',count:2},
+	{name:'carrier',count:2},
+	{name:'ranger',count:3}
+];
+
+var spawner = new Spawn(roles,startCombination);
+var creepLogic = new CreepLogic();
+
+function startGame(){
+  Game.spawns.Spawn1.memory.generation = 'firstGeneration';
+  spawner.spawnCreep();
+  creepLogic.proccessCreeps();
+
+};
+
+
+
+
+
+
+module.export = startGame;
