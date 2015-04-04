@@ -1,6 +1,6 @@
 
 var Spawn = require('spawner');
-var CreepLogic = require('creepLogic');
+var CreepLogics = require('creepLogic');
 
 var roles = {
 	firstGeneration:{
@@ -18,13 +18,22 @@ var startCombination = [
 	{name:'ranger',count:3}
 ];
 
-var spawner = new Spawn(roles,startCombination);
-var creepLogic = new CreepLogic();
+var spawner = new Spawn(Game.spawns.Spawn1.memory);
+var creepLogic = new CreepLogics();
 
 function startGame(){
+  Game.spawns.Spawn1.memory.startCombination = startCombination;
+  Game.spawns.Spawn1.memory.roles = roles;
+  Game.spawns.Spawn.memory.workMemory = {
+		guard: {count: 0},
+		healer: {count: 0},
+		ranger: {count: 0},
+		work: {count: 0},
+		carrier: {count: 0}
+	};
   Game.spawns.Spawn1.memory.generation = 'firstGeneration';
   spawner.spawnCreep();
-  creepLogic.proccessCreeps();
+  creepLogics.proccessCreeps();
 
 };
 

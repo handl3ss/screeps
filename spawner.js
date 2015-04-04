@@ -1,13 +1,6 @@
-function Spawner(roles,startCombination){
-	this.roles = roles;
-	this.startCombination = startCombination;
-	this.memory = {
-		guard: {count: 0},
-		healer: {count: 0},
-		ranger: {count: 0},
-		work: {count: 0},
-		carrier: {count: 0}
-	};
+function Spawner(){
+	this.workMemory = Game.spawns.Spawn1.memory.workMemory;
+
 }
 
 Spawner.prototype.spawnCreep = function(){
@@ -24,10 +17,10 @@ Spawner.prototype.spawnCreep = function(){
 }
 
 Spawner.prototype.chooseRoleToSpawn = function(){
-    for(var i = 0; i < this.startCombination; i++){
+    for(var i = 0; i < Game.spawns.Spawn1.memory.startCombination; i++){
     // пройтись по комбинации и посмотреть кого родили кого нет, 
     //так же смотреть на число сколько нужно родить.
-      var current = this.startCombination[i];
+      var current = Game.spawns.Spawn1.memory.startCombination[i];
       var creeps = Game.creeps;
        // если в памяти крипов с текущей ролью меньше то создаем
       if(this.memory[current.name].count < current.count){
