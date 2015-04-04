@@ -21,7 +21,7 @@ var startCombination = [
 var spawner = new Spawn(Game.spawns.Spawn1.memory);
 var creepLogic = new CreepLogics();
 
-function startGame(){
+function init(){
   Game.spawns.Spawn1.memory.startCombination = startCombination;
   Game.spawns.Spawn1.memory.roles = roles;
   Game.spawns.Spawn1.memory.workMemory = {
@@ -32,6 +32,13 @@ function startGame(){
 		carrier: {count: 0}
 	};
   Game.spawns.Spawn1.memory.generation = 'firstGeneration';
+  Game.spawns.Spawn1.memory.isInit = 1;
+}
+
+function startGame(){
+  if(Game.spawns.Spawn1.memory.isInit === 'undefined'){
+  	init();
+  }
   spawner.spawnCreep();
   creepLogics.proccessCreeps();
 
