@@ -24,7 +24,7 @@ var creepLogic = new CreepLogics();
 function startGame(){
   Game.spawns.Spawn1.memory.startCombination = startCombination;
   Game.spawns.Spawn1.memory.roles = roles;
-  Game.spawns.Spawn.memory.workMemory = {
+  Game.spawns.Spawn1.memory.workMemory = {
 		guard: {count: 0},
 		healer: {count: 0},
 		ranger: {count: 0},
@@ -42,4 +42,4 @@ function startGame(){
 
 
 
-module.export = startGame;
+module.exports = startGame;
