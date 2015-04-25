@@ -1,17 +1,20 @@
 function Spawner(){
-	
+
 }
 
 Spawner.prototype.spawnCreep = function(){
 	var counter = 0;	
+	var error = '';
     var roleToSpawn = this.chooseRoleToSpawn(); 
       // при рождении не указывать имя ибо не важно, но указать роль рождаемого.
     // комбинацию брать из первой генерации, смотреть есть ли генерация "еволюция" если есть брать с нее
     // рожаем
     if(typeof(Memory.roles.evolutioned) !== 'undefined'){
     	Game.spawns.Spawn1.createCreep(Memory.roles.evolutioned[roleToSpawn],null,{role:roleToSpawn});
+    	console.log('error when spawn: ' + error);
     } else {
-       var n =	Game.spawns.Spawn1.createCreep(Memory.roles.firstGeneration[roleToSpawn],null,{role:roleToSpawn});	
+      error =	Game.spawns.Spawn1.createCreep(Memory.roles.firstGeneration[roleToSpawn],null,{role:roleToSpawn});	
+       console.log('error when spawn: ' + error);
     }
 }
 

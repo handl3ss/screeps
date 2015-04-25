@@ -4,8 +4,8 @@ var CreepLogics = require('creepLogic');
 
 var roles = {
 	firstGeneration:{
-		guard: [Game.TOUGHT,Game.TOUGHT,Game.TOUGHT,Game.MOVE,Game.ATTACK,Game.ATTACK],
-		archer: [Game.TOUGHT,Game.TOUGHT,Game.MOVE,Game.RANGED_ATTACK,Game.RANGED_ATTACK],
+		guard: [Game.TOUGH,Game.TOUGH,Game.TOUGH,Game.MOVE,Game.ATTACK,Game.ATTACK],
+		archer: [Game.TOUGH,Game.TOUGH,Game.MOVE,Game.RANGED_ATTACK,Game.RANGED_ATTACK],
 		carrier: [Game.MOVE,Game.CARRY],
 		healer: [Game.MOVE,Game.HEAL,Game.HEAL],
 		worker: [Game.MOVE,Game.WORK,Game.WORK,Game.WORK]
