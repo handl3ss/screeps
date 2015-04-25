@@ -1,5 +1,5 @@
-function Spawner(){
-	this.memory = Game.spawns.Spawn1.memory.workMemory;
+function Spawner(mem){
+	this.memory = mem;
 
 }
 
@@ -10,19 +10,19 @@ Spawner.prototype.spawnCreep = function(){
       // при рождении не указывать имя ибо не важно, но указать роль рождаемого.
     // комбинацию брать из первой генерации, смотреть есть ли генерация "еволюция" если есть брать с нее
     // рожаем
-    if(typeof(Game.spawns.Spawn1.memory.roles.evolutioned) !== 'undefined'){
-    	Game.spawns.Spawn1.createCreep(Game.spawns.Spawn1.memory.roles.evolutioned[roleToSpawn],null,{role:roleToSpawn});
+    if(typeof(Memory.roles.evolutioned) !== 'undefined'){
+    	Game.spawns.Spawn1.createCreep(Memory.roles.evolutioned[roleToSpawn],null,{role:roleToSpawn});
     } else {
-       var n =	Game.spawns.Spawn1.createCreep(Game.spawns.Spawn1.memory.roles.firstGeneration[roleToSpawn],null,{role:roleToSpawn});	
+       var n =	Game.spawns.Spawn1.createCreep(Memory.roles.firstGeneration[roleToSpawn],null,{role:roleToSpawn});	
        //console.log(roleToSpawn)
     }
 }
 
 Spawner.prototype.chooseRoleToSpawn = function(){
-    for(var i = 0; i < Game.spawns.Spawn1.memory.startCombination.length; i++){
+    for(var i = 0; i < Memory.startCombination.length; i++){
      // пройтись по комбинации и посмотреть кого родили кого нет, 
     //так же смотреть на число сколько нужно родить.
-      var current = Game.spawns.Spawn1.memory.startCombination[i];
+      var current = Memory.startCombination[i];
       var creeps = Game.creeps;
       // если в памяти крипов с текущей ролью меньше то создаем
        console.log(this.memory[current.name].count)

@@ -18,25 +18,25 @@ var startCombination = [
 	{name:'ranger',count:3}
 ];
 
-var spawner = new Spawn(Game.spawns.Spawn1.memory);
-var creepLogic = new CreepLogics();
+var spawner = new Spawn(Memory);
+var creepLogics = new CreepLogics();
 
 function init(){
-  Game.spawns.Spawn1.memory.startCombination = startCombination;
-  Game.spawns.Spawn1.memory.roles = roles;
-  Game.spawns.Spawn1.memory.workMemory = {
+  Memory.startCombination = startCombination;
+  Memory.roles = roles;
+  Memory.workMemory = {
 		guard: {count: 0},
 		healer: {count: 0},
 		ranger: {count: 0},
 		work: {count: 0},
 		carrier: {count: 0}
 	};
-  Game.spawns.Spawn1.memory.generation = 'firstGeneration';
-  Game.spawns.Spawn1.memory.isInit = 1;
+  Memory.generation = 'firstGeneration';
+  Memory.isInit = 1;
 }
 
 function startGame(){
-  if(Game.spawns.Spawn1.memory.isInit === 'undefined'){
+  if(Memory.isInit === 'undefined'){
   	init();
   }
   spawner.spawnCreep();
