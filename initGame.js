@@ -22,25 +22,25 @@ var spawner = new Spawn(Memory);
 var creepLogics = new CreepLogics();
 
 function initMemory(){
-  var firstSpawn = Game.spaws.Spawn1;
-  if(firstSpawn && Memory.stateRoom !== firstSpawn.room.name){
-		  Memory.startCombination = startCombination;
-		  Memory.roles = roles;
-		  Memory.workMemory = {
-				guard: {count: 0},
-				healer: {count: 0},
-				ranger: {count: 0},
-				work: {count: 0},
-				carrier: {count: 0}
-			};
-		  Memory.generation = 'firstGeneration';
+	var firstSpawn = Game.spawns.Spawn1;
+	if(firstSpawn && Memory.stateRoom !== firstSpawn.room.name){
+		Memory.startCombination = startCombination;
+		Memory.roles = roles;
+		Memory.workMemory = {
+			guard: {count: 0},
+			healer: {count: 0},
+			ranger: {count: 0},
+			worker: {count: 0},
+			carrier: {count: 0}
+		};
+		Memory.generation = 'firstGeneration';
 	}
 }
 
 function startGame(){
-  initMemory();
-  spawner.spawnCreep();
-  creepLogics.proccessCreeps();
+	initMemory();
+	spawner.spawnCreep();
+	creepLogics.creepProcessor();
 
 };
 
